@@ -21,13 +21,18 @@ const Button ={
 }
 
 class PlayerOne extends React.Component{
+    constructor(props) {
+        super(props);
+    }
     render(){
     return(
-   <div >
+    <div >
        <h2>Player Two</h2>
        <h3>Name: {this.props.name}</h3>
        <h3>Played Number of Times: </h3>
-       <button style={Button}>This user is playing now</button>
+       <button style={Button} onClick={() => {this.props.myClick(this.props.name);}}
+       disabled={this.props.playing ? "disable" : ""}>{this.props.playing ? "The user is playing now" : "Play"}
+       </button>
     </div>
     );
     }

@@ -32,20 +32,35 @@ constructor(props) {
     this.state = {
       firstPlayer: "Player One",
       secondPlayer: "Player Two",
+      firstPlaying: null,
+      secondPlaying: null
     };
+    this.onClick= this.onClick.bind(this);
   }
 
+  onClick(name) {
+     this.setState(state => ({
+        firstPlaying: name == state.firstPlayer,
+        secondPlaying: name == state.secondPlayer
+     }));
+  }
     render(){
     return(
     <div >
      <div>
-        <div style={PlayerBox}><PlayerOne name={this.state.firstPlayer}/></div>
-        <div style={PlayerBox}><PlayerTwo name={this.state.secondPlayer}/></div>
+        <div style={PlayerBox}><PlayerOne name={this.state.firstPlayer}  playing={this.state.firstPlaying} myClick={this.onClick}/></div>
+        <div style={PlayerBox}><PlayerTwo name={this.state.secondPlayer}  playing={this.state.secondPlaying} myClick={this.onClick}/></div>
 
      </div>
      <div style={InputFields}>
-        <div><h4 style={Input}>Set Name of Player One: </h4><input style={Input} value={this.state.firstPlayer} type="text" onChange={onChangeEvent => this.setState({ firstPlayer: onChangeEvent.target.value })}></input></div>
-        <div><h4 style={Input}>Set Name of Player Two: </h4><input style={Input} value={this.state.secondPlayer} type="text" onChange={onChangeEvent => this.setState({ secondPlayer: onChangeEvent.target.value })}></input></div>
+        <div><h4 style={Input}>Set Name of Player One: </h4>
+        <input style={Input} value={this.state.firstPlayer} type="text"
+            onChange={onChangeEvent => this.setState({ firstPlayer: onChangeEvent.target.value })}>
+        </input></div>
+        <div><h4 style={Input}>Set Name of Player Two: </h4>
+        <input style={Input} value={this.state.secondPlayer} type="text"
+            onChange={onChangeEvent => this.setState({ secondPlayer: onChangeEvent.target.value })}>
+        </input></div>
     </div>
     </div>
     );
