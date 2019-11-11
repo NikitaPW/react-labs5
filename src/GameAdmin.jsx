@@ -27,17 +27,25 @@ const PlayerBox = {
 };
 
 class GameAdmin extends React.Component{
+constructor(props) {
+    super(props);
+    this.state = {
+      firstPlayer: "Player One",
+      secondPlayer: "Player Two",
+    };
+  }
+
     render(){
     return(
     <div >
      <div>
-        <div style={PlayerBox}><PlayerOne /></div>
-        <div style={PlayerBox}><PlayerTwo /></div>
+        <div style={PlayerBox}><PlayerOne name={this.state.firstPlayer}/></div>
+        <div style={PlayerBox}><PlayerTwo name={this.state.secondPlayer}/></div>
 
      </div>
      <div style={InputFields}>
-        <div><h4 style={Input}>Set Name of Player One: </h4><input style={Input}></input></div>
-        <div><h4 style={Input}>Set Name of Player Two: </h4><input style={Input}></input></div>
+        <div><h4 style={Input}>Set Name of Player One: </h4><input style={Input} value={this.state.firstPlayer} type="text" onChange={onChangeEvent => this.setState({ firstPlayer: onChangeEvent.target.value })}></input></div>
+        <div><h4 style={Input}>Set Name of Player Two: </h4><input style={Input} value={this.state.secondPlayer} type="text" onChange={onChangeEvent => this.setState({ secondPlayer: onChangeEvent.target.value })}></input></div>
     </div>
     </div>
     );
