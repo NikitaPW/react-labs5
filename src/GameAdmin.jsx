@@ -33,7 +33,7 @@ constructor(props) {
       firstPlayer: "Player One",
       secondPlayer: "Player Two",
       firstPlaying: null,
-      secondPlaying: null
+      secondPlaying: null,
     };
     this.onClick= this.onClick.bind(this);
   }
@@ -41,15 +41,15 @@ constructor(props) {
   onClick(name) {
      this.setState(state => ({
         firstPlaying: name == state.firstPlayer,
-        secondPlaying: name == state.secondPlayer
+        secondPlaying: name == state.secondPlayer,
      }));
   }
     render(){
     return(
     <div >
      <div>
-        <div style={PlayerBox}><PlayerOne name={this.state.firstPlayer}  playing={this.state.firstPlaying} myClick={this.onClick}/></div>
-        <div style={PlayerBox}><PlayerTwo name={this.state.secondPlayer}  playing={this.state.secondPlaying} myClick={this.onClick}/></div>
+        <div style={PlayerBox}><PlayerOne name={this.state.firstPlayer} playing={this.state.firstPlaying} Click={this.onClick}/></div>
+        <div style={PlayerBox}><PlayerTwo name={this.state.secondPlayer}  playing={this.state.secondPlaying} Click={this.onClick}/></div>
 
      </div>
      <div style={InputFields}>
